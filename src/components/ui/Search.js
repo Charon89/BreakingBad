@@ -1,13 +1,19 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 
-const Searcha = () => {
+const Search = ({getQ}) => {
+    const [text, setText] = useState('');
+    const onChange = (q) => {
+        setText(q);
+        getQ(q);
+    }
     return (
         <section className='search'>
             <form action="">
-                <input type="text" className='form-control' placeholder='Search characters' autoFocus/>
+                <input type="text" className='form-control' placeholder='Search characters' autoFocus value={text}
+                       onChange={event => onChange(event.target.value)}/>
             </form>
         </section>
     );
 };
 
-export default Searcha;
+export default Search;
